@@ -1,0 +1,5 @@
+https://www.cppreference.com/
+
+No Google Chrome: 
+
+3 pontinhos > Transmitir, salvar e compartilhar > Instalar página como app

@@ -1,0 +1,11 @@
+Pode ser necessário rodar esse comando para liberar e execução de scripts no Windows: 
+
+Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+
+Pode ser necessário rodar esses comandos também:
+
+Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+
+powershell.exe -ExecutionPolicy Bypass -File ".\windows-script.ps1"
+
+powershell.exe -ExecutionPolicy Bypass -File ".\windows-verificacao.ps1"
