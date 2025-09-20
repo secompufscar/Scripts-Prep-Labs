@@ -78,8 +78,26 @@ apt-get install -y mgccli
 echo "Magalu Cloud CLI instalada com sucesso."
 
 # --- 4. Instalação do Visual Studio Code ---
+# --- BLOCO CORRIGIDO ---
 echo ">>> [PASSO 4/7] Instalando o Visual Studio Code..."
+
+# Adiciona o repositório da Microsoft, caso ainda não exista
+echo "Verificando o repositorio do Visual Studio Code..."
+if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
+    echo "Adicionando o repositorio da Microsoft para o VS Code..."
+    # Adiciona a chave GPG da Microsoft
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/keyrings/microsoft.gpg
+    # Adiciona o repositorio
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | tee /etc/apt/sources.list.d/vscode.list > /dev/null
+    # Atualiza a lista de pacotes para incluir o novo repositorio
+    apt-get update
+else
+    echo "Repositorio do VS Code ja configurado."
+fi
+# Instala o VS Code
 apt-get install -y code
+echo "Visual Studio Code instalado com sucesso."
+# --- FIM DO BLOCO CORRIGIDO ---
 
 # --- 5. Instalação do Podman Desktop ---
 echo ">>> [PASSO 5/7] Configurando o Flatpak e instalando o Podman Desktop..."
@@ -109,19 +127,34 @@ sudo -u "$SUDO_USER" bash <<'EOF'
 set -e
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
 if [ ! -d "$PYENV_ROOT" ]; then
     echo "Instalando Pyenv..."
     curl https://pyenv.run | bash
 fi
+
+# Adiciona pyenv ao .bashrc do usuário se ainda não estiver lá
+if ! grep -q 'pyenv init' "$HOME/.bashrc"; then
+  echo '' >> "$HOME/.bashrc"
+  echo '# Pyenv setup' >> "$HOME/.bashrc"
+  echo 'export PYENV_ROOT="$HOME/.pyenv"' >> "$HOME/.bashrc"
+  echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> "$HOME/.bashrc"
+  echo 'eval "$(pyenv init --path)"' >> "$HOME/.bashrc"
+  echo 'eval "$(pyenv init -)"' >> "$HOME/.bashrc"
+fi
+
+# Inicializa pyenv neste shell
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
+# Instala Python se não estiver instalado
 if ! pyenv versions --bare | grep -q "^3.13.7$"; then
     echo "Instalando Python 3.13.7... (Este processo pode demorar varios minutos)"
     pyenv install 3.13.7
 else
     echo "Python 3.13.7 já está instalado."
 fi
+
 pyenv global 3.13.7
 EOF
 
