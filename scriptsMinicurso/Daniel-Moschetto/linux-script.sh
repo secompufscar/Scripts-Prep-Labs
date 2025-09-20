@@ -46,5 +46,5 @@ check_version "npm" "NPM"
 check_command "code" "Visual Studio Code"
 echo "================================================="
 echo "Lembre-se de reiniciar o terminal para os comandos funcionarem."
-echo "E instale a extensao Thunder Client manualmente no VS Code."
+echo "E instale a extensao Thunder Client manualmente no VS Code." [cite: 10]
 echo ">>> Instalacao concluida!"

@@ -4,7 +4,7 @@
 # Instala: Python (via pyenv), Node.js, Visual Studio Code e Docker
 # ==============================================================================
 set -e
-echo ">>> Iniciando a instalacao para o curso de Raphael Mantilha..."
+echo ">>> Iniciando a instalacao completa para o curso de Raphael Mantilha..."
 
 # --- Verificacao de Root e Preparacao ---
 if [ "$EUID" -ne 0 ]; then echo "ERRO: Por favor, execute como root."; exit 1; fi
@@ -49,7 +49,7 @@ apt-get install -y code
 
 echo ">>> [PASSO 4/4] Configurando o repositorio e instalando o Docker..."
 apt-get remove --purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras docker.io docker-doc docker-compose podman-docker containerd runc docker-buildx || true
-rm -rf /var/lib/docker && rm -rf /var/lib/containerd
+rm -rf /var/lib/docker /var/lib/containerd
 install -m 0755 -d /etc/apt/keyrings
 rm -f /etc/apt/keyrings/docker.gpg
 curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -68,7 +68,11 @@ check_version "python" "Python"
 check_version "node" "Node.js"
 check_command "code" "Visual Studio Code"
 check_version "docker" "Docker Engine"
-if docker compose version &> /dev/null; then echo "✅ [SUCESSO] - Docker Compose (plugin) esta instalado."; else echo "❌ [FALHA]   - Docker Compose (plugin) NAO esta instalado."; fi
+if docker compose version &> /dev/null; then
+    echo "✅ [SUCESSO] - Docker Compose (plugin) esta instalado."
+else
+    echo "❌ [FALHA]   - Docker Compose (plugin) NAO esta instalado."
+fi
 echo "================================================="
-echo "Lembre-se de reiniciar o terminal para os comandos funcionarem."
+echo "Lembre-se de reiniciar o terminal para os comandos funcionarem (especialmente o docker sem sudo)."
 echo ">>> Instalacao concluida!"

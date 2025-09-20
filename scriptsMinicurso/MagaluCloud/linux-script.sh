@@ -1,19 +1,16 @@
 #!/bin/bash
 # ==============================================================================
-# Script de Instalação para a Magalu Cloud CLI
-# Instala e verifica a CLI da Magalu Cloud via repositorio APT.
+# Script de Instalação para o minicurso da Magalu Cloud
+# Instala: Magalu Cloud CLI (mgccli)
 # ==============================================================================
 set -e
 echo ">>> Iniciando a instalacao da Magalu Cloud CLI..."
 
 # --- Verificacao de Root e Preparacao ---
-if [ "$EUID" -ne 0 ]; then 
-    echo "ERRO: Por favor, execute este script como root (usando sudo)."
-    exit 1
-fi
-echo ">>> Atualizando pacotes e instalando dependencias..."
+if [ "$EUID" -ne 0 ]; then echo "ERRO: Por favor, execute como root."; exit 1; fi
+echo ">>> Atualizando pacotes..."
 apt-get update
-apt-get install -y curl gpg
+apt-get install -y curl gpg wget
 
 # --- Funcoes de Verificacao ---
 check_version() {
