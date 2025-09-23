@@ -83,13 +83,14 @@ Escolha o script correspondente ao seu sistema operacional e à sua necessidade 
 
 3.  **Navegue até a Pasta do Script Desejado:**
     Use o comando `cd` para entrar na pasta onde o script está. Exemplo:
-    ```powershell
-    # Exemplo para o script geral
-    cd C:\caminho\para\Scripts-Prep-Labs\scriptGeral\windows
-    
-    # Exemplo para um script de minicurso
-    cd C:\caminho\para\Scripts-Prep-Labs\scriptsMinicurso\Daniel-Moschetto
-    ```
+      ```powershell
+      # Exemplo para o script geral
+      cd C:\caminho\para\Scripts-Prep-Labs\scriptGeral\windows
+      ```
+      ```powershell
+       # Exemplo para um script de minicurso
+       cd C:\caminho\para\Scripts-Prep-Labs\scriptsMinicurso\Daniel-Moschetto
+      ```
 
 4.  **Permita a Execução de Scripts (apenas uma vez):**
     No terminal de Administrador, execute os seguintes comandos:
@@ -119,20 +120,5 @@ Escolha o script correspondente ao seu sistema operacional e à sua necessidade 
 
    **Após isso os softwares estarão prontos para uso!**
 
----
+   ---
 
-## 🛠️ Softwares Inclusos nos Scripts Gerais
-
-| Categoria                | Software                        | SO       |
-| ------------------------ | ------------------------------- | -------- |
-| **Desenvolvimento Web** | Node.js (via NVM), NPM          | Ambos    |
-| **Desenvolvimento Geral**| Python 3.13.7 (via Pyenv/Choco) | Ambos    |
-|                          | Git                             | Ambos    |
-|                          | VS Code                         | Ambos    |
-| **Compiladores** | GCC, G++ (MinGW no Windows)     | Ambos    |
-|                          | Java (OpenJDK)                  | Ambos    |
-| **Contêineres** | Docker & Docker Desktop         | Ambos    |
-|                          | Podman & Podman Desktop         | Ambos    |
-| **Cloud** | Magalu Cloud CLI                | Ambos    |
-| **Utilitários Windows** | Cheat Engine, dnSpyEx, PowerToys| Windows  |
-| **Editores** | Gedit                           | Ambos    |
