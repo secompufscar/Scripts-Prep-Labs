@@ -118,6 +118,8 @@ Escolha o script correspondente ao seu sistema operacional e à sua necessidade 
     .\windows-verificacao.ps1
     ```
 
+   **OBS:** O  `windows-script-2.ps1` só deve ser utilizado caso o primeiro falhe, pois ele reinstala todos os softwares, mesmo que já os tenham instalados.
+   
    **Após isso os softwares estarão prontos para uso!**
 
    ---
