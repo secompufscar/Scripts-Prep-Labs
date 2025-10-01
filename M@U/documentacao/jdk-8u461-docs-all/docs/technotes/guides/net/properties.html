@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xml:lang=
+"en-US">
+<head>
+<title>Networking Properties</title>
+<link rel="stylesheet" type="text/css" href="../../../technotes/css/guide.css" />
+</head>
+<body>
+<!-- STATIC HEADER -->
+
+<!-- header start -->
+<div id="javaseheader">
+<div id="javaseheaderlogo">
+<img src="../../../images/javalogo.gif"
+alt="Java logo" />
+</div>
+<div id="javaseheaderindex">
+
+<a href=
+"../../../index.html">Documentation Contents</a>
+</div>
+<div class="clear"></div>
+</div>
+
+<!-- header end -->
+
+
+<h1>Networking Properties</h1>
+
+<h2>System Properties</h2>
+
+<p>See <a href="../../../api/java/net/doc-files/net-properties.html">Network System Properties</a>
+for a list of system properties used to alter the mechanisms and
+behavior of the various classes of the <code><a href="../../../api/java/net/package-summary.html">java.net</a></code> package.</p>
+
+
+<h2>JDK Implementation-Specific Properties</h2>
+
+<p>These properties may not be supported in future releases.</p>
+
+<ul><li><p><strong><code>sun.net.inetaddr.ttl</code></strong><br/>
+This is a Oracle JDK private system property that corresponds to
+<code>networkaddress.cache.ttl</code>. It takes the same
+value and has the same meaning, but can be set as a command-line
+option. However, the preferred way is to use the security property
+<code>networkaddress.cache.ttl</code>.</p></li>
+
+<li><p><strong><code>sun.net.inetaddr.negative.ttl</code></strong><br/>
+This is a Oracle JDK private system property that corresponds to
+<code>networkaddress.cache.negative.ttl</code>. It takes the
+same value and has the same meaning, but can be set as a
+command-line option. However, the preferred way is to use the
+security property <code>networkaddress.cache.negative.ttl</code>.</p></li>
+
+<li><p><strong><code>sun.net.client.defaultConnectTimeout</code></strong> (default:
+<code>-1</code>)<br/>
+<strong><code>sun.net.client.defaultReadTimeout</code></strong> (default:
+<code>-1</code>)<br/>
+These properties specify the default connect and read timeout, respectively,
+for the protocol handler used by <code>java.net.URLConnection</code>.
+<p><code>sun.net.client.defaultConnectTimeout</code> specifies the timeout (in
+milliseconds) to establish the connection to the host. For example
+for HTTP connections, it is the timeout when establishing the
+connection to the HTTP server. For FTP connections, it is the timeout
+when establishing the connection to FTP servers.</p>
+<p><code>sun.net.client.defaultReadTimeout</code> specifies the timeout (in
+milliseconds) when reading from input stream when a connection is
+established to a resource.</p></li>
+
+<li><p><strong><code>sun.net.http.retryPost</code></strong> (default: <code>true</code>)<br/>
+It determines if an unsuccessful HTTP POST request will be
+automatically resent to the server. Unsuccessful in this case means
+the server did not send a valid HTTP response or an <code>IOException</code>
+occurred.</p></li>
+
+</ul>
+
+<h2><a name="jndi" id="jndi">JNDI DNS Service Provider Settings</a></h2>
+
+<p>These properties may not be supported in future releases.</p>
+
+<ul>
+
+<li><p><strong><code>sun.net.spi.nameservice.provider.&lt;n&gt;=&lt;default|dns,sun|...&gt;</code></strong><br/>
+Specifies the name service provider that you can use. By
+default, the JDK will use the system configured name lookup mechanism,
+such as <code>file</code>, <code>nis</code>, etc. You can specify your own by setting this
+option. <code>&lt;n&gt;</code> takes the value of a positive number. It
+indicates the precedence order. A smaller number takes higher
+precedence over a bigger number. Aside from the default provider,
+the JDK includes a DNS provider named <code>dns,sun</code>.
+<p>Providers are chained, which means that if a
+lookup on a provider fails, the next provider in the list is
+consulted to resolve the name.</p></li>
+
+<li><p><strong><code>sun.net.spi.nameservice.nameservers=&lt;server1_ipaddr,server2_ipaddr
+...&gt;</code></strong><br/>
+You can specify a comma-separated list of IP addresses that
+point to the DNS servers you want to use. If the
+<code>sun.net.spi.nameservice.nameservers property</code> is not defined, then
+the provider will use any name servers already configured in the
+platform DNS configuration.</p></li>
+
+<li><p><strong><code>sun.net.spi.nameservice.domain=&lt;domainname&gt;</code></strong><br/>
+This property specifies the default DNS domain name, for
+instance, <code>eng.example.com</code>. If the <code>sun.net.spi.nameservice.domain</code>
+property is not defined then the provider will use any domain or
+domain search list configured in the platform DNS
+configuration.</p></li>
+
+</ul>
+
+
+<!--  footer start -->
+<div id="javasefooter">
+<div class="hr">
+<hr /></div>
+<div id="javasecopyright">
+<img id="oraclelogofooter" src=
+"../../../images/oraclelogo.gif" alt="Oracle and/or its affiliates"
+border="0" width="100" height="29" name=
+"oraclelogofooter" />
+
+<a href="../../../legal/cpyr.html">Copyright
+&#169;</a> 1993, 2025, Oracle and/or its affiliates. All rights
+reserved.</div>
+<div id="javasecontactus">
+<a href=
+"http://docs.oracle.com/javase/feedback.html">Contact
+Us</a>
+</div>
+</div>
+<!-- footer end -->
+
+<!-- STATIC FOOTER -->
+
+</body>
+</html>
